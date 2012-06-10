@@ -1,8 +1,3 @@
-<html>
-<head>
-		<title>Calender</title>
-		<script type="text/javascript" src="js/jquery-1.3.min.js"></script>
-		<script type="text/javascript" src="js/coda.js"> </script>
 		<script  type='text/javascript'>
 			function popup(url) 
 			{
@@ -12,15 +7,12 @@
 				});	
 			}
 		</script>
-</head>
-<body >
-<link rel="stylesheet" href="css/style.css" type="text/css">
 <?php
 				
 		$calendar = getCalendar($month,$year);
 		function getCalendar($month = "" , $year = "")
 		{
-			$con=mysql_connect("localhost","root","");		//Coonect to mysql
+			$con=mysql_connect("localhost","root","");		//Connect to mysql
 			if(!$con)
 			{
 				die('Could not connect: ' . mysql_error());
@@ -127,5 +119,3 @@
 		}
 ?>
 <div id="calendar_wrapper"><?PHP echo @$calendar ?></div>		<!-- call calender function -->
-</body>
-</html>
