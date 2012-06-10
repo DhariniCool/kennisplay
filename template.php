@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<title>Template</title>
-		<?
+		<?php
 	  	  include('head.php');	
 		?>
 	</head>
 	<body>
 	  <div class="page">
-		<?
+		<?php
 		   include('header.php');
 		   echo"<br>";
 		   include('menu.php');
@@ -20,7 +20,7 @@
 			</div>
 			
 			<div class="rightwindow">
-			<?
+			<?php
 			   include('calender.php');
 			?>
 			</div>
