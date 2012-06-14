@@ -8,7 +8,9 @@
 			}
 		</script>
 <?php
-				
+		$year=date("Y");		/*Current year as 2012*/
+		$month=date("n");		/*Current month as 5*/	
+		$day=date("j");		/*Current day as 1 (mon)*/			
 		$calendar = getCalendar($month,$year);
 		function getCalendar($month = "" , $year = "")
 		{
@@ -18,9 +20,7 @@
 				die('Could not connect: ' . mysql_error());
 			}
 			mysql_select_db("kennisplay_cal",$con);		//select database
-			$year=date("Y");		/*Current year as 2012*/
-			$month=date("n");		/*Current month as 5*/	
-			$day=date("j");		/*Current day as 1 (mon)*/		
+				
 			if (isset($_GET['m'])) 		//get variable from url 
 			{
 				$month = mysql_escape_string(htmlentities(strip_tags($_GET['m'])));
@@ -46,7 +46,7 @@
 				$next_year++;
 				$next_month = "1";
 			}
-
+			$counter=0;
 			$no_of_days=date("t",mktime(0,0,0,$month,1,$year));    //no of days in a month
 			$firstday=date("w",mktime(0,0,0,$month,1,$year));         /*Day on which first day falls*/
 			$no_of_cells=$firstday + $no_of_days;		
@@ -70,14 +70,14 @@
 			<div style='text-align:center;'>
 			<tr>
 			<td colspan='1'><span style='float:left;'>
-				<a href='$global[envself]?y=$last_year&m=$last_month' > <img src='images/leftarrow.png' height=30 width=30> </a><span>
+				<a href='calender.php?y=$last_year&m=$last_month' > <img src='images/leftarrow.png' height=30 width=30> </a><span>
 			</td>
 			<th colspan='5' background='calpad.jpg' > <span style='font-size:25px'>	
 			";
 			echo date('M', mktime(0,0,0,$month,1,$year)).' '.$year;  	//display current month and year
 			echo "</span> </th>
 	 		<td colspan='1'><span style='float:right;'>
-			<a href='$global[envself]?y=$next_year&m=$next_month' ><img src='images/rightarrow.png' height=30 width=30> </a></span>
+			<a href='calender.php?y=$next_year&m=$next_month' ><img src='images/rightarrow.png' height=30 width=30> </a></span>
 			</td>
 				</tr>
 			</div>
