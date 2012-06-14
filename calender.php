@@ -1,3 +1,6 @@
+		<link rel="stylesheet" href="css/style.css" type="text/css">
+		<script src="js/jquery-1.3.min.js" type="text/javascript"> </script>
+		<script src="js/coda.js" type="text/javascript"> </script>
 		<script  type='text/javascript'>
 			function popup(url) 
 			{
@@ -7,20 +10,20 @@
 				});	
 			}
 		</script>
+
 <?php
 		$year=date("Y");		/*Current year as 2012*/
 		$month=date("n");		/*Current month as 5*/	
-		$day=date("j");		/*Current day as 1 (mon)*/			
+		$day=date("j");		/*Current day as 1 (mon)*/				
 		$calendar = getCalendar($month,$year);
 		function getCalendar($month = "" , $year = "")
 		{
-			$con=mysql_connect("localhost","root","");		//Connect to mysql
+			$con=mysql_connect("localhost","root","");		//Coonect to mysql
 			if(!$con)
 			{
 				die('Could not connect: ' . mysql_error());
 			}
-			mysql_select_db("kennisplay_cal",$con);		//select database
-				
+			mysql_select_db("kennisplay_cal",$con);		//select database	
 			if (isset($_GET['m'])) 		//get variable from url 
 			{
 				$month = mysql_escape_string(htmlentities(strip_tags($_GET['m'])));
@@ -97,8 +100,8 @@
 					echo "<tr>";
 					for($i=0;$i<7;$i++)
 					{	
-						$url="http://localhost/details.php?yr=".$year."&dat=".$week[$j][$i]."&mn=".$month;		
-						$rs1 = mysql_query("SELECT * FROM calender where month=$month and year=$year");
+						$url="http://localhost/KP/details.php?yr=".$year."&dat=".$week[$j][$i]."&mn=".$month;		
+						$rs1 = mysql_query("SELECT * FROM symposium where month=$month and year=$year");
 						if(($ro = mysql_fetch_assoc($rs1))&&($week[$j][$i]==$ro['day']))	//check if current date has any details in database
 						{
 							echo "<td align='center' background='images/background.jpg'> ";	//if so, make background diffrent
